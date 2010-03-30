@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-package PX;
+package Pod::CYOA::XHTML;
 use Pod::Simple::XHTML 3.13;
 use base 'Pod::Simple::XHTML';
 

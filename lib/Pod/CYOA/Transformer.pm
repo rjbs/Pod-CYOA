@@ -1,4 +1,4 @@
-package Choices;
+package Pod::CYOA::Transformer;
 use Moose;
 with 'Pod::Elemental::Transformer';
 
