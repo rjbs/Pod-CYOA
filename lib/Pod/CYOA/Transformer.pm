@@ -1,6 +1,7 @@
 package Pod::CYOA::Transformer;
 use Moose;
 with 'Pod::Elemental::Transformer';
+# ABSTRACT: transform 'cyoa' regions
 
 use Pod::Elemental::Types qw(FormatName);
 
