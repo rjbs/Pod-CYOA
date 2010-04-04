@@ -44,11 +44,13 @@ sub _expand_cyoa {
   my @replacements;
 
   push @replacements, Pod::Elemental::Element::Pod5::Region->new({
-    is_pod      => 1,
+    is_pod      => 0,
     format_name => 'html',
     content     => '',
     children    => [
-      Pod::Elemental::Element::Pod5::Data->new({ content => "<hr />" }),
+      Pod::Elemental::Element::Pod5::Data->new({
+        content => "<div class='cyoa'>",
+      }),
     ],
   });
 
@@ -75,6 +77,17 @@ sub _expand_cyoa {
   push @replacements, Pod::Elemental::Element::Pod5::Command->new({
     command => 'back',
     content => '',
+  });
+
+  push @replacements, Pod::Elemental::Element::Pod5::Region->new({
+    is_pod      => 0,
+    format_name => 'html',
+    content     => '',
+    children    => [
+      Pod::Elemental::Element::Pod5::Data->new({
+        content => "</div>",
+      }),
+    ],
   });
 
   return @replacements;
