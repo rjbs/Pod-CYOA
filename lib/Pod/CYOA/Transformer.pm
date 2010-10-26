@@ -3,6 +3,43 @@ use Moose;
 with 'Pod::Elemental::Transformer';
 # ABSTRACT: transform 'cyoa' regions
 
+=head1 OVERVIEW
+
+Pod::CYOA::Transformer is a L<Pod::Elemental::Transformer> implementation.  It
+looks for a region with the format name C<cyoa> and transforms it into a
+C<=item>-list surrounded by C<html> regions.
+
+A C<cyoa> region is written with pairs of C<?>-separated values representing
+page links and descriptions.  For example:
+
+  =for :cyoa
+  ? pie-eating  ? eat a pie
+  ? start       ? start over
+  ? visit-lefty ? buy an "O"
+
+...will become something like:
+
+  =for html
+  <div class='cyoa'>
+
+  =over 4
+
+  =item * If you'd like to L<eat a pie|@pie-eating>
+
+  =item * If you'd like to L<start over|@start>
+
+  =item * If you'd like to L<buy an "O"|@visit-lefty>
+
+  =back
+
+  =for html
+  </div>
+
+The C<@>-prefix on the link targets is expected to be handled by
+L<Pod::CYOA::XHTML>.
+
+=cut
+
 use Pod::Elemental::Types qw(FormatName);
 
 has format_name => (
